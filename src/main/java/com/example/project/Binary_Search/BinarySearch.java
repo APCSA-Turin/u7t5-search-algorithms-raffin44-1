@@ -1,24 +1,24 @@
 package com.example.project.Binary_Search;
 
 public class BinarySearch {
-    // implements binary search on the elements list for target,
-    // and returns the index at which the target is found, or -1 if
+    // Implements binary search on the elements list for target,
+    // and returns the index at which the target is found, or -1 if not found.
     public static int binarySearch(int[] elements, int target) {
-        // int loopCounter = 0; // for testing
-        // int leftIdx =    // TODO: assign this initial value
-        // int rightIdx =   // TODO: assign this initial value
+        int leftIdx = 0;  // Initialize left index to the start of the array
+        int rightIdx = elements.length - 1;  // Initialize right index to the end of the array
 
-        // while (    ) {  // TODO: determine this condition (hint: see slides 61-63)
-        //     loopCounter++; // for testing
-        //     System.out.print(loopCounter + " "); // for testing
-        //     int middleIdx =   // TODO: determine what this should be
+        while (leftIdx <= rightIdx) {  // Continue while left index is <= right index
+            int middleIdx = leftIdx + (rightIdx - leftIdx) / 2;  // Find middle index
 
-        //     // TODO: write the rest of the code to compare middleIdx to the target
-        //     //  and adjust leftIdx and rightIdx as appropriate (see slides if needed)
-
-
-
-        // }
-        return -1; // not found
+            if (elements[middleIdx] == target) {  // If target is found, return index
+                return middleIdx;
+            } else if (elements[middleIdx] < target) {  // If target is greater, search right half
+                leftIdx = middleIdx + 1;
+            } else {  // If target is smaller, search left half
+                rightIdx = middleIdx - 1;
+            }
+        }
+        return -1; // Return -1 if target is not found
     }
 }
+
